@@ -1,3 +1,0 @@
-<?php
-
-//formularul de contact
