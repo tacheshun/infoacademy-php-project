@@ -5,7 +5,7 @@
 session_start();
 
 var_dump($_POST);
-//verifica daca vine prin post si din index.php
+//verifica daca vine prin post
 if($_SERVER['REQUEST_METHOD'] == "GET"){
 	header('Location: index.php');
 	exit;
@@ -15,7 +15,7 @@ if($_SERVER['REQUEST_METHOD'] == "GET"){
 		header('Location: index.php');
 		exit;
 	}else{
-		// verificam daca userul si parola exista in array
+		// verificam daca userul si parola exista in arrayul cu date
 		if(!array_key_exists($_POST['user'],$users) || $users[$_POST['user']] !== $_POST['password']){
 			echo "<h1>Autentificare esuata!</h1>\n\r";
 			echo "<a href=".$home.">Incercati din nou?</a>";
@@ -23,13 +23,15 @@ if($_SERVER['REQUEST_METHOD'] == "GET"){
 			// salvam username-ul in sesiune
 			$_SESSION['username'] = $_POST['user'];
 			$_SESSION['password'] = sha1($_POST['password']);
+			//afisaza form rezervare camere
+			//ideal ar fi sa modularizam cu functii
 			echo "Aici va fi un formular selectie camere "."<br>";
 			echo $_SESSION['username']."<br>";
 			echo $_SESSION['password']."<br>";
 		}
 	}
 }
-//afisaza form
+
 
 ?>
 <?php require_once 'includes/footer.php'; ?>

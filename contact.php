@@ -1,7 +1,7 @@
 <?php require_once 'includes/header.php'; ?>
 <?php require_once 'includes/data.php'; ?>
 <?php require_once 'includes/functions.php'; ?>
-
+<?php session_start(); ?>
 <?php
 
 //formularul de contact
