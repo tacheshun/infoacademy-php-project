@@ -1,9 +1,13 @@
+<?php session_start(); ?>
 <?php require_once 'includes/header.php'; ?>
 <?php require_once 'includes/data.php'; ?>
 <?php require_once 'includes/functions.php'; ?>
-<?php session_start(); ?>
-<?php
 
+<?php
+if(get_logout()){
+	header('location: index.php');
+	exit();
+}
 //formularul de contact
 $form = <<<gata
 <div style="margin-left:20px;"><h1>Formular contact</h1></div>
@@ -33,8 +37,7 @@ $form = <<<gata
 					<textarea name="intrebare" id="intrebarea" class="input-xlarge span5" rows="10"></textarea>
 				</div>
 			</div>
-				<input type="sumbit" class="btn btn-primary pull-right" value="Trimite" /
-				>
+				<input type="sumbit" name="submit" class="btn btn-primary pull-right" value="Trimite" />
 			</form>
 gata;
 echo $form;
