@@ -44,7 +44,7 @@ gata;
 if($_SERVER['REQUEST_METHOD']==='GET'){
 	echo $form;
 }else{
-	if(!isset($_POST['nume']) || !preg_match('/^[a-z][A-Z]+([ \,\'\/][a-z][A-Z]+)+$/', $_POST['nume'])){
+	if(!isset($_POST['nume']) || !preg_match('/^[a-zA-Z]+([ \,\'\/][a-zA-Z]+)+$/', $_POST['nume'])){
 		echo "<div class='alert alert-error'>Introduceti un nume de persoana format dintr-o succesiune de cuvinte care incep cu litera mica sau mare, separate prin
 spatiu, virgula sau apostrof</div>";
 		echo $form;

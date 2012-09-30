@@ -17,10 +17,10 @@ if (empty($_POST['tipcamera']) || empty($_POST['numarnopti']) || empty($_POST['m
 else{
 	echo "<div class='alert alert-success'>Va multumim!</div>";
 	echo "<div class='alert'>Alegerea dumneavoastra am primit-o corect si consta in: </div>";
-	echo "<h4>Tip camera: </h4><p>" . $_POST['tipcamera'] . "</p>";
-	echo "<h4>Numar de nopti: </h4><p>" . $_POST['numarnopti'] . "</p>";
-	echo "<h4>Modalitatea de plata: </h4><p>" . $_POST['modalitateplata'] . "</p>";
-	echo "<h4>Numar de rate(in cazul in care s-a ales plata in rate): </h4><p>" . $_POST['numarrate'] . "</p>";
+	echo "<h4>Tip camera: </h4> <p>" . $_POST['tipcamera'] . "</p>";
+	echo "<h4>Numar de nopti: </h4> <p>" . $_POST['numarnopti'] . "</p>";
+	echo "<h4>Modalitatea de plata: </h4> <p>" . $_POST['modalitateplata'] . "</p>";
+	echo "<h4>Numar de rate(in cazul in care s-a ales plata in rate): </h4> <p>" . $_POST['numarrate'] . "</p>";
 }
 
 
