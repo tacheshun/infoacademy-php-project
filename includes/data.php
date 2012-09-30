@@ -2,6 +2,8 @@
 
 $users = array("student" => "test", "marius" => "1234");
 
+$preturicamere=array("single" => 100, "double" => 140);
+
 $links = array("InfoAcademy" => "http://www.infoacademy.net", "PHP Romania" => "http://phpromania.net/", "PHP.net"=>"http://php.net");
 
 $loginform = <<<loginform
@@ -18,18 +20,18 @@ loginform;
 $reserva_form = <<<rezervaform
 		<h1>Rezerva o camera</h1>
 		<form class="well form-inline" action="multumim.php" method="post">
-    <label>Tipul camerei
+    <label>Tipul camerei *
          <select class="span2" name="tipcamera">
             <option name="single">Single</option>
             <option name="double">Double</option>
         </select>
       </label>
         <br>
-        <label>Numar de nopti 
-        <input type="text" name="numarnopti" class="span2" placeholder="Numar de nopti">
+        <label>Numar de nopti *
+        <input type="text" name="numarnopti" class="span2" placeholder="Numar de nopti"> 
         </label>
         <br>
-         <label>Modalitatea de plata
+         <label>Modalitatea de plata *
         <select class="span2" name="modalitateplata">
         	<option name="tot">Tot Odata</option>
         	<option name="rate">Rate</option>
@@ -43,7 +45,7 @@ $reserva_form = <<<rezervaform
         <input type="submit" value="Trimite date" class="btn btn-primary"/>
         <input type="reset" value="Sterge date" class="btn"/>
       </form>
+    <div class='alert alert-error'> Atentie! Campurile marcate cu (*) sunt obligatorii</div>
 rezervaform;
-
 
 ?>
