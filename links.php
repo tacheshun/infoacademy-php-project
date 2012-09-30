@@ -2,14 +2,13 @@
 <?php require_once 'includes/header.php'; ?>
 <?php require_once 'includes/data.php'; ?>
 <?php require_once 'includes/functions.php'; ?>
-
-<div style="margin-left:20px;"><h1>Linkuri utile</h1></div>
+<div style="margin-left:10px;"><h1>Linkuri utile</h1></div>
 <?php
-if(get_logout()){
-	header('location: index.php');
-	exit();
+get_logout();
+
+foreach ($links as $key=>$value) {
+	echo "<div style='margin-left:10px;'><a href='$value'>$key</a></div>";
 }
-var_dump($links);
 
 ?>
 <?php require_once 'includes/footer.php'; ?>

@@ -26,6 +26,9 @@
               if (isset($_SESSION['user'])) {
                 echo "<li><a class='active' href='#'>Salut " . $_SESSION['user'] . "</a></li>";
                 echo "<li><a href='?logout=1'>Logout</a></li>";
+              }elseif (isset($_POST['user'])) {
+                echo "<li><a class='active' href='#'>Salut " . $_POST['user'] . "</a></li>";
+                echo "<li><a href='?logout=1'>Logout</a></li>";
               }
               
               ?>

@@ -4,25 +4,25 @@
 <?php require_once 'includes/functions.php'; ?>
 
 <?php
+
 if(get_logout()){
 	header('location: index.php');
 	exit();
 }
-//formularul de contact
 $form = <<<gata
 <div style="margin-left:20px;"><h1>Formular contact</h1></div>
-
-<form class="well span8">
+	<form class="well span8" action="$_SERVER[PHP_SELF]" method="post">
 			<div class="row">
 				<div class="span3">
 					<label>Nume complet</label>
-					<input type="text" class="span3" placeholder="Nume complet">
+					<input type="text" name="nume" class="span3" placeholder="Nume complet">
 					<label>Adresa Email</label>
 					<div class="input-prepend">
-						<span class="add-on"><i class="icon-envelope"></i></span><input type="text" id="inputIcon" class="span2" style="width:180px" placeholder="Adresa email">
+						<span class="add-on"><i class="icon-envelope"></i></span>
+						<input type="text" name="email" id="inputIcon" class="span2" style="width:180px" placeholder="Adresa email">
 					</div>
 					<label>Telefon</label>
-					<input type="text" class="span3" placeholder="Telefon">
+					<input type="text" name="telefon" class="span3" placeholder="Telefon">
 					<label>De unde ati auzit de noi
 						<select id="deunde" name="deunde" class="span3">
 							<option value="nimic" selected="">Selectionati</option>
@@ -37,9 +37,28 @@ $form = <<<gata
 					<textarea name="intrebare" id="intrebarea" class="input-xlarge span5" rows="10"></textarea>
 				</div>
 			</div>
-				<input type="sumbit" name="submit" class="btn btn-primary pull-right" value="Trimite" />
-			</form>
+				<button class="btn btn-primary pull-right" value="Trimite">Trimite</button>
+	</form>
 gata;
-echo $form;
+
+if($_SERVER['REQUEST_METHOD']==='GET'){
+	echo $form;
+}else{
+	if(!isset($_POST['nume']) || !preg_match('/^[a-z][A-Z]+([ \,\'\/][a-z][A-Z]+)+$/', $_POST['nume'])){
+		echo "<div class='alert alert-error'>Introduceti un nume de persoana format dintr-o succesiune de cuvinte care incep cu litera mica sau mare, separate prin
+spatiu, virgula sau apostrof</div>";
+		echo $form;
+	}elseif(!isset($_POST['email']) || !preg_match('/^[0-9A-Za-z._%+-]+@[0-9A-Za-z.-]+\.[A-Za-z]{2,6}$/', $_POST['email'])){
+		echo "<div class='alert alert-error'>Introduceti o adresa de email valida! </div>";
+		echo $form;
+	}elseif(!isset($_POST['telefon']) || !preg_match('/^0(21|31|7[2-8])\d{7}$/', $_POST['telefon'])){
+		echo "<div class='alert alert-error'>Introduceti un numar de telefon de fix sau mobil Romanesc!</div>";
+		echo $form;
+    }else{
+		echo "<div class='alert alert-success'>Va multumim pentru interes. Veti fi contactat in cel mai scurt timp de unul dintre consultantii nostri de vanzari </div>";
+		echo "<a href='$_SERVER[PHP_SELF]'>Inapoi la formular</a>";
+	}
+ }
+
 ?>
 <?php require_once 'includes/footer.php'; ?>
