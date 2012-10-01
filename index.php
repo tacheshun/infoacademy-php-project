@@ -8,7 +8,7 @@ get_logout();
 
 if($_SERVER['REQUEST_METHOD'] == "GET" && empty($_SESSION['user'])){
 	echo $loginform;
-	
+
 }elseif(empty($_SESSION['user'])){
 
 	if(empty($_POST['user']) && empty($_POST['pass'])){
@@ -20,9 +20,9 @@ if($_SERVER['REQUEST_METHOD'] == "GET" && empty($_SESSION['user'])){
 			echo "<div class='alert alert-error'>Autentificare esuata!</div>\n";
 			echo $loginform;
 		}else{
-			// salvam username-ul in sesiune
+			// salvam username-ul si parola in sesiune. Parola nu ne trebuie insa dar tot o salvam.
 			$_SESSION['user'] = $_POST['user'];
-			$_SESSION['password'] = $_POST['pass'];
+			$_SESSION['password'] = md5($_POST['pass']);
 			echo $reserva_form;
 		}
 	}

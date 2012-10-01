@@ -2,9 +2,11 @@
 
 $users = array("student" => "test", "marius" => "1234");
 
-$preturicamere=array("single" => 100, "double" => 140);
+
 
 $links = array("InfoAcademy" => "http://www.infoacademy.net", "PHP Romania" => "http://phpromania.net/", "PHP.net"=>"http://php.net");
+
+$preturicamere = array("single" => 100, "double" => 140);
 
 $loginform = <<<loginform
 <h1>Bine ati venit</h1>
@@ -28,7 +30,7 @@ $reserva_form = <<<rezervaform
       </label>
         <br>
         <label>Numar de nopti *
-        <input type="text" name="numarnopti" class="span2" placeholder="Numar de nopti"> 
+        <input type="number"  name="numarnopti" class="span1" value="1" min="1" step="1" required> 
         </label>
         <br>
          <label>Modalitatea de plata *

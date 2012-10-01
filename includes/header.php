@@ -16,7 +16,7 @@
     <div class="navbar navbar-inverse navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container">
-          <a class="brand" href="index.php">Hotels Reservation</a>
+          <a class="brand" href="index.php">Hotel Reservation</a>
           <div class="nav-collapse collapse">
             <ul class="nav">
               <li><a href="index.php">Rezerva</a></li>
