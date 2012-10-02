@@ -35,8 +35,8 @@ $reserva_form = <<<rezervaform
         <br>
          <label>Modalitatea de plata *
         <select class="span2" name="modalitateplata">
-        	<option name="tot">Tot Odata</option>
-        	<option name="rate">Rate</option>
+        	<option value="Tot Odata">Tot Odata</option>
+        	<option value="Rate">Rate</option>
         </select>
         </label>
         <br>

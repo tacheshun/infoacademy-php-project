@@ -24,22 +24,36 @@ if (!is_numeric($_POST['numarnopti']) || empty($_POST['tipcamera']) || empty($_P
 	echo "<h4>Modalitatea de plata: </h4> <p>" . $_POST['modalitateplata'] . "</p>";
 
 	if ($_POST['tipcamera'] == "Single") {
-		echo "<h2>Total de Plata</h2>" . $preturicamere["single"] * $_POST['numarnopti'] . " RON";
+		echo "<h2>Total de Plata</h2>" . $preturicamere["single"] * $_POST['numarnopti'] . " RON<br>";
 		$calcul_single = $preturicamere["single"] * $_POST['numarnopti'];
 	}elseif($_POST['tipcamera'] == "Double") {
-		echo "<h2>Total de Plata</h2>" . $preturicamere["double"] * $_POST['numarnopti'] . " RON";
+		echo "<h2>Total de Plata</h2>" . $preturicamere["double"] * $_POST['numarnopti'] . " RON<br>";
 		$calcul_double = $preturicamere["double"] * $_POST['numarnopti'];
 	}else{
 		echo "<h2>Nu ati selectionat niciun tip de camera</h2>";
 	}
-	echo "<h4>Numar de rate(in cazul in care s-a ales plata in rate): </h4> <p>" . $_POST['numarrate'] . "</p>";
 
-	if (isset($_POST['numarrate']) && $_POST['tipcamera'] == "Single") {
-		echo "<p>Asta inseamna cate <strong>" . $calcul_single/$_POST['numarrate'] . " RON</strong> de platit in " . $_POST['numarrate'] . " rate.</p>";
-	}elseif(isset($_POST['numarrate']) && $_POST['tipcamera'] == "Double"){
-		echo "<p>Asta inseamna cate <strong>" . $calcul_double/$_POST['numarrate'] . " RON</strong>  de platit in " . $_POST['numarrate'] . " rate.</p>";
+	if (!empty($_POST['numarrate']) && is_numeric($_POST['numarrate']) && $_POST['modalitateplata'] == "Rate") {
+		
+		echo "<h4>Numar de rate: </h4> <p>" . $_POST['numarrate'] . "</p>";
+
+		if ($_POST['tipcamera'] == "Single" && is_numeric($_POST['numarrate']) && $_POST['modalitateplata'] == "Rate") {
+			echo "<p>Asta inseamna cate <strong>" . $calcul_single/$_POST['numarrate'] . " RON</strong> de platit in " . $_POST['numarrate'] . " rate.</p>";
+		}elseif($_POST['tipcamera'] == "Double" && is_numeric($_POST['numarrate'])&& $_POST['modalitateplata'] == "Rate"){
+			echo "<p>Asta inseamna cate <strong>" . $calcul_double/$_POST['numarrate'] . " RON</strong>  de platit in " . $_POST['numarrate'] . " rate.</p>";
+		}else{
+			echo "<span>Ati optat sa platiti tot odata</span>";
+		}
+	}elseif ($_POST['modalitateplata']=="Rate" && $_POST['numarrate'] == "") {
+		echo "<br><div class='alert alert-error'>Atentie! Ati selectionat plata in rate insa nu ati specificat un numar de rate.</div>";
+			echo "<span>Platiti Tot Odata sau </span>";
+			echo "<a class='btn btn-danger' href='index.php'>Rectifica</a>";
+	}elseif(!empty($_POST['numarrate']) && is_numeric($_POST['numarrate'])){
+		    echo "<br><div class='alert alert-error'>Atentie! Ati selectionat plata tot odata insa ati specificat un numar de rate.</div>";
+		    echo "<span>Ramane plata Tot Odata sau </span>";
+			echo "<a class='btn btn-danger' href='index.php'>Rectifica</a>";
 	}else{
-		echo "Ati optat sa platiti tot odata"; //nu se afisaza
+		//
 	}
 	
 
