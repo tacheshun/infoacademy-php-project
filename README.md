@@ -1,9 +1,12 @@
 [RO] Proiect final InfoAcademy PHP Programmer 
 =
 
+***Edit 10 Noiembrie 2013 -  Am inteles ca proiectul ar avea cateva buguri. Rugamintea mea e sa testati si sa le rezolvati singuri, doar de aia v-ati inscris la curs, nu? Eu nu o sa mai actualizez acest proiect.
+
 In repo-ul asta voi tine codul pentru solutia proiectului final al cursului PHP Programmer de la InfoAcademy.
 
-Codul este procedural si fara a utiliza baze de date, conform programei cursului PHP Programmer.
+Codul este procedural si fara a utiliza baze de date, conform programei cursului.
+
 
 
 Pentru cerinte vezi:
